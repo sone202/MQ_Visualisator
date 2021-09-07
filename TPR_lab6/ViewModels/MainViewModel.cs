@@ -156,12 +156,14 @@ namespace TPR_lab6.ViewModels
                 SetIndGraphic();
             }
         }
+
         private void SetLabels()
         {
             Labels = new string[Data.Count];
             for (int i = 0; i < Data.Count; i++)
                 Labels[i] = Data[i].DateTime.Date.ToString("dd MMMM");
         }
+
         private void SetGraphic()
         {
             Graphic = new SeriesCollection();
@@ -206,6 +208,7 @@ namespace TPR_lab6.ViewModels
 
             OnPropertyChanged(nameof(Graphic));
         }
+
         private void SetVolGraphic()
         {
             ChartValues<double> points = new ChartValues<double>();
@@ -214,6 +217,7 @@ namespace TPR_lab6.ViewModels
             VolGraphic.Add(new ColumnSeries { Values = points });
             OnPropertyChanged(nameof(VolGraphic));
         }
+
         private void SetIndGraphic()
         {
             switch (SelectedInd)
@@ -222,6 +226,12 @@ namespace TPR_lab6.ViewModels
                     {
 
                         IndGraphic = RSI(14);
+                        break;
+                    }
+                case "MACD":
+                    {
+
+                        IndGraphic = MACD(12, 26, 9);
                         break;
                     }
                 case "SMA":
@@ -239,12 +249,6 @@ namespace TPR_lab6.ViewModels
                                     };
                             }
                             catch { }
-                        break;
-                    }
-                case "MACD":
-                    {
-
-                        IndGraphic = MACD(12, 26, 9);
                         break;
                     }
                 case "EMA":
