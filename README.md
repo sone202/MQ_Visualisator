@@ -1,5 +1,5 @@
 # MQ_Visualisator
-Simple program for market quatations analysis.
+Simple program for market quotations analysis.
 
 Программа для визуализации котировок, а также их анализа при помощи различных индикаторов:
 
